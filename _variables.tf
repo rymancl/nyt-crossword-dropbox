@@ -12,21 +12,17 @@ variable "dropbox_token" {
   description = "Dropbox API token."
 }
 
+# TODO: add variable validation block (regex)
 variable "nyt_cookie" {
-  sensitive = true
-  type = object({
-    nyt-a           = string
-    NYT-S           = string
-    nyt-auth-method = string
-    nyt-m           = string
-  })
+  sensitive   = true
   description = <<-EOT
-    Cookie contents copied from an authenticated NYT session. 
+    Cookie string copied from an authenticated NYT session. 
+    Should be in the format of "nyt-a:somevalue; NYT-S:somevalue; nyt-auth-method:somevalue; nyt-m:somevalue;"
+
     This will need to be updated once every 365 days.
   EOT
 }
 
 locals {
-  name              = "nyt-cw-dl-dbx"
-  nyt_cookie_string = "nyt-a=${var.nyt_cookie.nyt-a}; NYT-S=${var.nyt_cookie.NYT-S}; nyt-auth-method=${var.nyt_cookie.nyt-auth-method}; nyt-m=${var.nyt_cookie.nyt-m};"
+  name = "nyt-cw-dl-dbx"
 }

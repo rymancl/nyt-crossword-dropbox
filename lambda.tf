@@ -46,7 +46,7 @@ resource "aws_lambda_function" "downloader" {
     variables = {
       DROPBOX_ACCESS_TOKEN = var.dropbox_token,
       DROPBOX_FILE_PATH    = var.dropbox_path,
-      NYT_COOKIE           = local.nyt_cookie_string
+      NYT_COOKIE           = var.nyt_cookie
     }
   }
 }

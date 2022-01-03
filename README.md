@@ -12,7 +12,8 @@ Automated NYT crossword to Dropbox downloader, built with AWS.
 * Terraform [v1.0.0 or greater](https://www.terraform.io/downloads)
 
 ## Usage
-* Extract cookie from authenticated NYT session and pass cookie parts into `var.nyt_cookie`
+* Extract cookie from authenticated NYT session and pass cookie string into `var.nyt_cookie`
+  * This string can be extracted using `console.log(document.cookie)` while in an authenticated session
   * Cookies that are required to authenticate are: `nyt-a`, `NYT-S`, `nyt-auth-method`, and `nyt-m`
 * Pass Dropbox API key into `var.dropbox_token`
 * Deploy via [Terraform](https://www.terraform.io/)
